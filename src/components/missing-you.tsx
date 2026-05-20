@@ -18,6 +18,20 @@ export function MissingYou() {
   }, [])
 
   const handlePress = useCallback(() => {
+    const params = new URLSearchParams(window.location.search)
+    const currentUser = params.get('user')
+
+    let targetUser = ''
+
+    if (currentUser === 'kaustu') {
+      targetUser = 'riji'
+    } else if (currentUser === 'riji') {
+      targetUser = 'kaustu'
+    } else {
+      alert('Unknown user 😭 use your special link')
+      return
+    }
+
     const message = MISS_ME_MESSAGES[Math.floor(Math.random() * MISS_ME_MESSAGES.length)]
     setCurrentMessage(message)
     setShowMessage(true)
@@ -36,9 +50,12 @@ export function MissingYou() {
       },
       body: JSON.stringify({
         app_id: "e46f14ac-f050-4201-a38f-1a2a861f5881",
-        included_segments: ["Subscribed Users"],
+        include_aliases: {
+          external_id: [targetUser]
+        },
+        target_channel: "push",
         headings: { en: "💌 Missing You" },
-        contents: { en: "Kaustav misses you right now 🥹❤️" },
+        contents: { en: `${currentUser} misses you right now 🥹❤️` },
       }),
     })
 
