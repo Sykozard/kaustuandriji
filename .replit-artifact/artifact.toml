@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "kaustuandriji | Our Love Story"
+version = "1.0.0"
+id = "artifacts/kaustuandriji"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24005
+
+[services.development]
+run = "pnpm --filter @workspace/kaustuandriji run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/kaustuandriji", "run", "build" ]
+publicDir = "artifacts/kaustuandriji/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24005"
+BASE_PATH = "/"
