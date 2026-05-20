@@ -22,7 +22,25 @@ export function MissingYou() {
     setCurrentMessage(message)
     setShowMessage(true)
     setBurst(true)
-    setTimeout(() => { setShowMessage(false); setBurst(false) }, 2200)
+
+    setTimeout(() => {
+      setShowMessage(false)
+      setBurst(false)
+    }, 2200)
+
+    fetch("https://api.onesignal.com/notifications", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "dymspbtveuc3v3or3ylqql7hj",
+      },
+      body: JSON.stringify({
+        app_id: "e46f14ac-f050-4201-a38f-1a2a861f5881",
+        included_segments: ["Subscribed Users"],
+        headings: { en: "💌 Missing You" },
+        contents: { en: "Kaustav misses you right now 🥹❤️" },
+      }),
+    })
 
     setTapCount((prev) => {
       const next = prev + 1
@@ -49,11 +67,16 @@ export function MissingYou() {
       </div>
 
       <div className="relative flex items-center justify-center mb-10">
-        {/* Burst rings */}
         {burst && (
           <>
-            <div className="absolute w-56 h-56 rounded-full border-2 border-primary/40 animate-ping pointer-events-none" style={{ animationDuration: '0.6s' }} />
-            <div className="absolute w-72 h-72 rounded-full border border-primary/20 animate-ping pointer-events-none" style={{ animationDuration: '0.9s' }} />
+            <div
+              className="absolute w-56 h-56 rounded-full border-2 border-primary/40 animate-ping pointer-events-none"
+              style={{ animationDuration: '0.6s' }}
+            />
+            <div
+              className="absolute w-72 h-72 rounded-full border border-primary/20 animate-ping pointer-events-none"
+              style={{ animationDuration: '0.9s' }}
+            />
           </>
         )}
 
@@ -74,12 +97,13 @@ export function MissingYou() {
         </button>
       </div>
 
-      {/* Message bubble */}
       <div className="h-16 flex items-center justify-center">
         <div
           className={cn(
             "glass rounded-2xl px-6 py-3 max-w-xs text-center transition-all duration-300",
-            showMessage ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-3 pointer-events-none"
+            showMessage
+              ? "opacity-100 scale-100 translate-y-0"
+              : "opacity-0 scale-95 translate-y-3 pointer-events-none"
           )}
         >
           <p className="text-foreground font-serif">{currentMessage}</p>
