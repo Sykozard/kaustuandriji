@@ -3,8 +3,11 @@ import { Heart } from 'lucide-react'
 import { SecretPopup } from '@/components/secret-popup'
 import { MISS_ME_MESSAGES } from '@/lib/constants'
 import { cn } from '@/lib/utils'
+import { useIdentity } from '@/hooks/use-identity'
 
 export function MissingYou() {
+  const { currentUser, partner } = useIdentity()
+
   const [showMessage, setShowMessage] = useState(false)
   const [currentMessage, setCurrentMessage] = useState('')
   const [tapCount, setTapCount] = useState(0)
@@ -18,17 +21,8 @@ export function MissingYou() {
   }, [])
 
   const handlePress = useCallback(() => {
-    const params = new URLSearchParams(window.location.search)
-    const currentUser = params.get('user')
-
-    let targetUser = ''
-
-    if (currentUser === 'kaustu') {
-      targetUser = 'riji'
-    } else if (currentUser === 'riji') {
-      targetUser = 'kaustu'
-    } else {
-      alert('Unknown user 😭 use your special link')
+    if (!currentUser || !partner) {
+      alert('Pick your identity first 😭')
       return
     }
 
@@ -51,7 +45,7 @@ export function MissingYou() {
       body: JSON.stringify({
         app_id: "e46f14ac-f050-4201-a38f-1a2a861f5881",
         include_aliases: {
-          external_id: [targetUser]
+          external_id: [partner]
         },
         target_channel: "push",
         headings: { en: "💌 Missing You" },
@@ -67,7 +61,7 @@ export function MissingYou() {
       }
       return next
     })
-  }, [])
+  }, [currentUser, partner])
 
   return (
     <div className="min-h-[calc(100vh-7rem)] flex flex-col items-center justify-center p-6">
