@@ -46,7 +46,7 @@ export function MissingYou() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "dymspbtveuc3v3or3ylqql7hj",
+        Authorization: "Key dymspbtveuc3v3or3ylqql7hj",
       },
       body: JSON.stringify({
         app_id: "e46f14ac-f050-4201-a38f-1a2a861f5881",
