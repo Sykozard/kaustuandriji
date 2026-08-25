@@ -34,8 +34,8 @@ function getRelationshipTime(start: Date) {
 
 function getNextAnniversary() {
   const now = new Date()
-  let ann = new Date(now.getFullYear(), 4, 10) // May 10
-  if (now >= ann) ann = new Date(now.getFullYear() + 1, 4, 10)
+  let ann = new Date(now.getFullYear(), 3, 13) // April 13
+  if (now >= ann) ann = new Date(now.getFullYear() + 1, 3, 13)
   return ann
 }
 
@@ -108,7 +108,7 @@ const LiveTimer = memo(function LiveTimer() {
           </div>
         ))}
       </div>
-      <p className="text-center text-xs text-muted-foreground mt-3">since 10 May 2026</p>
+      <p className="text-center text-xs text-muted-foreground mt-3">since 13 April 2025</p>
     </DashboardCard>
   )
 })
@@ -144,7 +144,7 @@ const AnniversaryCountdown = memo(function AnniversaryCountdown() {
           </div>
         ))}
       </div>
-      <p className="text-center text-xs text-muted-foreground mt-3">10 May every year</p>
+      <p className="text-center text-xs text-muted-foreground mt-3">13 April every year</p>
     </DashboardCard>
   )
 })
@@ -172,7 +172,7 @@ const DistanceTracker = memo(function DistanceTracker() {
 })
 
 const LiveTimeZones = memo(function LiveTimeZones() {
-  const [times, setTimes] = useState({ kaustu: '', riji: '', kaustuDate: '', rijiDate: '' })
+  const [times, setTimes] = useState({ ana: '', ali: '', anaDate: '', aliDate: '' })
 
   useEffect(() => {
     const update = () => {
@@ -182,10 +182,10 @@ const LiveTimeZones = memo(function LiveTimeZones() {
       const fmtDate = (tz: string) =>
         new Intl.DateTimeFormat('en-US', { timeZone: tz, weekday: 'short', month: 'short', day: 'numeric' }).format(now)
       setTimes({
-        kaustu: fmt('Asia/Kolkata'),
-        riji: fmt('Australia/Melbourne'),
-        kaustuDate: fmtDate('Asia/Kolkata'),
-        rijiDate: fmtDate('Australia/Melbourne'),
+        ana: fmt('Asia/Kolkata'),
+        ali: fmt('Australia/Melbourne'),
+        anaDate: fmtDate('Asia/Kolkata'),
+        aliDate: fmtDate('Australia/Melbourne'),
       })
     }
     update()
@@ -203,8 +203,8 @@ const LiveTimeZones = memo(function LiveTimeZones() {
       </div>
       <div className="grid grid-cols-2 gap-3">
         {[
-          { name: 'Kaustu', emoji: '💜', time: times.kaustu, date: times.kaustuDate, location: 'India (IST)' },
-          { name: 'Riji', emoji: '💗', time: times.riji, date: times.rijiDate, location: 'Melbourne (AEDT)' },
+          { name: 'Ana', emoji: '💜', time: times.ana, date: times.anaDate, location: 'India (IST)' },
+          { name: 'Ali', emoji: '💗', time: times.ali, date: times.aliDate, location: 'Melbourne (AEDT)' },
         ].map((u) => (
           <div key={u.name} className="glass-light rounded-xl p-4 text-center">
             <span className="text-2xl">{u.emoji}</span>
@@ -229,7 +229,7 @@ const QuoteCard = memo(function QuoteCard() {
           <Quote className="w-5 h-5 text-accent" />
         </div>
         <div>
-          <p className="text-foreground font-serif italic leading-relaxed">"{quote.text}"</p>
+          <p className="text-foreground font-serif italic leading-relaxed">\"{{quote.text}}\"</p>
           <p className="text-muted-foreground text-xs mt-2">— {quote.author}</p>
         </div>
       </div>
@@ -249,7 +249,7 @@ export function Dashboard() {
         }`}
       >
         <h1 className="text-3xl md:text-4xl font-serif text-foreground text-glow mb-1">
-          kaustu & riji
+          ana & ali
         </h1>
         <p className="text-muted-foreground text-sm">our love, our story, our forever 💗</p>
       </div>

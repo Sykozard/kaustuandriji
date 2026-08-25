@@ -3,7 +3,7 @@ import { Heart, Lock, Eye, EyeOff } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const GATE_PASSWORD = 'Mayahourbeloved'
-const STORAGE_KEY = 'kaustuandriji_access'
+const STORAGE_KEY = 'anaandali_access'
 
 interface PasswordGateProps {
   children: React.ReactNode
@@ -73,7 +73,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
           <div className="w-16 h-16 rounded-full bg-primary/20 glow flex items-center justify-center mx-auto animate-pulse-glow">
             <Lock className="w-7 h-7 text-primary" />
           </div>
-          <h1 className="text-2xl font-serif text-foreground text-glow">kaustuandriji</h1>
+          <h1 className="text-2xl font-serif text-foreground text-glow">ana & ali</h1>
           <p className="text-sm text-muted-foreground">our private little world</p>
         </div>
 
@@ -118,7 +118,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
 
         <div className="mt-6 flex items-center justify-center gap-2 text-muted-foreground/40">
           <Heart className="w-3 h-3 fill-current" />
-          <span className="text-xs">Kaustu & Riji</span>
+          <span className="text-xs">Ana & Ali</span>
           <Heart className="w-3 h-3 fill-current" />
         </div>
       </div>

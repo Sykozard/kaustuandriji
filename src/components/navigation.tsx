@@ -143,7 +143,7 @@ export const Navigation = memo(function Navigation() {
         <div className="flex items-center justify-between h-14 px-4">
           <Link href="/" className="flex items-center gap-2">
             <Heart className="w-5 h-5 text-primary fill-primary" />
-            <span className="font-serif text-foreground text-sm">kaustuandriji</span>
+            <span className="font-serif text-foreground text-sm">ana & ali</span>
           </Link>
           <button
             onClick={switchUser}

@@ -36,7 +36,7 @@ export function IdentitySelector() {
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          {(['Kaustu', 'Riji'] as const).map((name, i) => (
+          {(['Ana', 'Ali'] as const).map((name, i) => (
             <button
               key={name}
               onClick={() => setCurrentUser(name)}
@@ -49,7 +49,7 @@ export function IdentitySelector() {
               style={{ transitionDelay: mounted ? `${300 + i * 100}ms` : '0ms' }}
             >
               <div className="relative z-10">
-                <span className="block text-3xl mb-2">{name === 'Kaustu' ? '💜' : '💗'}</span>
+                <span className="block text-3xl mb-2">{name === 'Ana' ? '💜' : '💗'}</span>
                 <span className="text-lg font-medium text-foreground">{name}</span>
               </div>
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
