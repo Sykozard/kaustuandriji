@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Heart, Lock, Eye, EyeOff } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-const GATE_PASSWORD = 'Mayahourbeloved'
+const GATE_PASSWORD = 'analovesali69'
 const STORAGE_KEY = 'anaandali_access'
 
 interface PasswordGateProps {
