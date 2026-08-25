@@ -229,7 +229,7 @@ const QuoteCard = memo(function QuoteCard() {
           <Quote className="w-5 h-5 text-accent" />
         </div>
         <div>
-          <p className="text-foreground font-serif italic leading-relaxed">\"{{quote.text}}\"</p>
+          <p className="text-foreground font-serif italic leading-relaxed">"{quote.text}"</p>
           <p className="text-muted-foreground text-xs mt-2">— {quote.author}</p>
         </div>
       </div>
